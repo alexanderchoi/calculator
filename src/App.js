@@ -1,26 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component, useState } from "react";
+import "./App.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import Output from "./Output";
+import Numpad from "./Numpad";
+
+class App extends Component() {
+  state = {
+    result: ""
+  };
+
+  buttonPressed = buttonName => {
+    this.setState({
+      result: buttonName
+    });
+  };
+
+  render() {
+    return (
+      <div className="App">
+        <Output result={this.state.result} />
+        <Numpad buttonPressed={this.buttonPressed} />
+      </div>
+    );
+  }
 }
 
 export default App;
